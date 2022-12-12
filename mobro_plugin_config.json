@@ -7,74 +7,74 @@
   "localization": "Resources/Localization",
   "settings": [
     {
-      "id": "cpu_enabled",
-      "name": "settings.cpu.title",
+      "name": "cpu_enabled",
+      "label": "settings.cpu.title",
       "description": "settings.cpu.desc",
-      "type": "bool",
+      "type": "checkbox",
       "default": true,
       "required": false
     },
     {
-      "id": "gpu_enabled",
-      "name": "settings.gpu.title",
+      "name": "gpu_enabled",
+      "label": "settings.gpu.title",
       "description": "settings.gpu.desc",
-      "type": "bool",
+      "type": "checkbox",
       "default": true,
       "required": false
     },
     {
-      "id": "ram_enabled",
-      "name": "settings.ram.title",
+      "name": "ram_enabled",
+      "label": "settings.ram.title",
       "description": "settings.ram.desc",
-      "type": "bool",
+      "type": "checkbox",
       "default": true,
       "required": false
     },
     {
-      "id": "motherboard_enabled",
-      "name": "settings.motherboard.title",
+      "name": "motherboard_enabled",
+      "label": "settings.motherboard.title",
       "description": "settings.motherboard.desc",
-      "type": "bool",
+      "type": "checkbox",
       "default": true,
       "required": false
     },
     {
-      "id": "hdd_enabled",
-      "name": "settings.drives.title",
+      "name": "hdd_enabled",
+      "label": "settings.drives.title",
       "description": "settings.drives.desc",
-      "type": "bool",
+      "type": "checkbox",
       "default": true,
       "required": false
     },
     {
-      "id": "controller_enabled",
-      "name": "settings.controller.title",
+      "name": "controller_enabled",
+      "label": "settings.controller.title",
       "description": "settings.controller.desc",
-      "type": "bool",
+      "type": "checkbox",
       "default": true,
       "required": false
     },
     {
-      "id": "network_enabled",
-      "name": "settings.network.title",
+      "name": "network_enabled",
+      "label": "settings.network.title",
       "description": "settings.network.desc",
-      "type": "bool",
+      "type": "checkbox",
       "default": true,
       "required": false
     },
     {
-      "id": "psu_enabled",
-      "name": "settings.psu.title",
+      "name": "psu_enabled",
+      "label": "settings.psu.title",
       "description": "settings.psu.desc",
-      "type": "bool",
+      "type": "checkbox",
       "default": true,
       "required": false
     },
     {
-      "id": "battery_enabled",
-      "name": "settings.battery.title",
+      "name": "battery_enabled",
+      "label": "settings.battery.title",
       "description": "settings.battery.desc",
-      "type": "bool",
+      "type": "checkbox",
       "default": true,
       "required": false
     }

@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Parse metrics of no specific type as numeric instead of text where applicable
 - Sensor as struct to reduce memory allocations
+- Updated to new SDK
 
 ## 0.0.2 - 2022-11-06
 

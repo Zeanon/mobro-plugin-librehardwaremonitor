@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Immutable;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using System.Timers;
 using LibreHardwareMonitor.Hardware;
 using MoBro.Plugin.LibreHardwareMonitor.Extensions;
 using MoBro.Plugin.LibreHardwareMonitor.Model;
@@ -18,38 +17,53 @@ namespace MoBro.Plugin.LibreHardwareMonitor;
 public class LibreHardwareMonitor : IMoBroPlugin
 {
   private static readonly Regex IdSanitationRegex = new(@"[^\w\.\-]", RegexOptions.Compiled);
+  private static readonly TimeSpan UpdateInterval = TimeSpan.FromMilliseconds(1000);
 
   private readonly Computer _computer;
+  private readonly Timer _timer;
+
+  private IMoBroService? _service;
 
   public LibreHardwareMonitor()
   {
     _computer = new Computer();
-    _computer.Open();
+    _timer = new Timer
+    {
+      Interval = UpdateInterval.TotalMilliseconds,
+      AutoReset = true,
+      Enabled = false
+    };
+    _timer.Elapsed += Update;
   }
 
-  public Task Init(IPluginSettings settings, IMoBro mobro)
+  public void Init(IMoBroSettings settings, IMoBroService service)
   {
+    _service = service;
+
     // update computer settings
     SetComputerSettings(settings);
-    _computer.Reset();
+    _computer.Open();
 
     // register groups and metrics
-    mobro.Register(ParseMetricItems().ToArray());
-    return Task.CompletedTask;
+    _service.RegisterItems(ParseMetricItems());
+
+    // start polling metric values
+    _timer.Start();
   }
 
-  public Task<IEnumerable<IMetricValue>> GetMetricValues(IList<string> ids)
+  public void Pause() => _timer.Stop();
+
+  public void Resume() => _timer.Start();
+
+  private void Update(object? sender, ElapsedEventArgs e)
   {
-    var idSet = ids.ToImmutableHashSet();
     var now = DateTime.UtcNow;
     var values = _computer.Hardware
       .Peek(h => h.Update())
       .SelectMany(GetSensors)
-      .Where(s => idSet.Contains(s.Id))
-      .Select(s => new MetricValue(s.Id, now, GetMetricValue(s)))
-      .Cast<IMetricValue>()
-      .ToList();
-    return Task.FromResult<IEnumerable<IMetricValue>>(values);
+      .Select(s => new MetricValue(s.Id, now, GetMetricValue(s)));
+
+    _service?.UpdateMetricValues(values);
   }
 
   private IEnumerable<IMoBroItem> ParseMetricItems()
@@ -71,7 +85,6 @@ public class LibreHardwareMonitor : IMoBroPlugin
       .Select(h => MoBroItem.CreateGroup()
         .WithId(SanitizeId(h.Identifier.ToString()))
         .WithLabel(h.Name)
-        .WithoutIcon()
         .Build()
       )
       .Select(m => m as IMoBroItem)
@@ -191,7 +204,7 @@ public class LibreHardwareMonitor : IMoBroPlugin
     return IdSanitationRegex.Replace(id, "");
   }
 
-  private void SetComputerSettings(IPluginSettings settings)
+  private void SetComputerSettings(IMoBroSettings settings)
   {
     _computer.IsCpuEnabled = settings.GetValue<bool>("cpu_enabled");
     _computer.IsGpuEnabled = settings.GetValue<bool>("gpu_enabled");
