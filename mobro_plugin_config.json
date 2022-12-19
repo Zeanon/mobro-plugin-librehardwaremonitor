@@ -11,7 +11,7 @@
       "label": "settings.cpu.title",
       "description": "settings.cpu.desc",
       "type": "checkbox",
-      "default": true,
+      "defaultValue": true,
       "required": false
     },
     {
@@ -19,7 +19,7 @@
       "label": "settings.gpu.title",
       "description": "settings.gpu.desc",
       "type": "checkbox",
-      "default": true,
+      "defaultValue": true,
       "required": false
     },
     {
@@ -27,7 +27,7 @@
       "label": "settings.ram.title",
       "description": "settings.ram.desc",
       "type": "checkbox",
-      "default": true,
+      "defaultValue": true,
       "required": false
     },
     {
@@ -35,7 +35,7 @@
       "label": "settings.motherboard.title",
       "description": "settings.motherboard.desc",
       "type": "checkbox",
-      "default": true,
+      "defaultValue": true,
       "required": false
     },
     {
@@ -43,7 +43,7 @@
       "label": "settings.drives.title",
       "description": "settings.drives.desc",
       "type": "checkbox",
-      "default": true,
+      "defaultValue": true,
       "required": false
     },
     {
@@ -51,7 +51,7 @@
       "label": "settings.controller.title",
       "description": "settings.controller.desc",
       "type": "checkbox",
-      "default": true,
+      "defaultValue": true,
       "required": false
     },
     {
@@ -59,7 +59,7 @@
       "label": "settings.network.title",
       "description": "settings.network.desc",
       "type": "checkbox",
-      "default": true,
+      "defaultValue": true,
       "required": false
     },
     {
@@ -67,7 +67,7 @@
       "label": "settings.psu.title",
       "description": "settings.psu.desc",
       "type": "checkbox",
-      "default": true,
+      "defaultValue": true,
       "required": false
     },
     {
@@ -75,7 +75,7 @@
       "label": "settings.battery.title",
       "description": "settings.battery.desc",
       "type": "checkbox",
-      "default": true,
+      "defaultValue": true,
       "required": false
     }
   ]

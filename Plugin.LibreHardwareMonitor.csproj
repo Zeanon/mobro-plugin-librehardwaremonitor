@@ -11,7 +11,7 @@
         <Title>MoBro LibreHardwareMonitor Plugin</Title>
         <Copyright>(C) ModBros OG 2022</Copyright>
         <PackageProjectUrl>www.mod-bros.com</PackageProjectUrl>
-        <VersionPrefix>0.0.4</VersionPrefix>
+        <VersionPrefix>0.1.0</VersionPrefix>
         <Nullable>enable</Nullable>
         <EnableDynamicLoading>true</EnableDynamicLoading>
         <RuntimeIdentifier>win-x64</RuntimeIdentifier>
@@ -21,7 +21,7 @@
 
     <ItemGroup>
         <PackageReference Include="LibreHardwareMonitorLib" Version="0.9.1" />
-        <PackageReference Include="MoBro.Plugin.SDK" Version="0.1.0" />
+        <PackageReference Include="MoBro.Plugin.SDK" Version="0.1.1" />
     </ItemGroup>
 
     <ItemGroup>

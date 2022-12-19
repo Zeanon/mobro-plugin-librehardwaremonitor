@@ -19,13 +19,15 @@ public class LibreHardwareMonitor : IMoBroPlugin
   private static readonly Regex IdSanitationRegex = new(@"[^\w\.\-]", RegexOptions.Compiled);
   private static readonly TimeSpan UpdateInterval = TimeSpan.FromMilliseconds(1000);
 
+  private readonly IMoBroSettings _settings;
+  private readonly IMoBroService _service;
   private readonly Computer _computer;
   private readonly Timer _timer;
 
-  private IMoBroService? _service;
-
-  public LibreHardwareMonitor()
+  public LibreHardwareMonitor(IMoBroSettings settings, IMoBroService service)
   {
+    _settings = settings;
+    _service = service;
     _computer = new Computer();
     _timer = new Timer
     {
@@ -36,12 +38,18 @@ public class LibreHardwareMonitor : IMoBroPlugin
     _timer.Elapsed += Update;
   }
 
-  public void Init(IMoBroSettings settings, IMoBroService service)
+  public void Init()
   {
-    _service = service;
-
     // update computer settings
-    SetComputerSettings(settings);
+    _computer.IsCpuEnabled = _settings.GetValue<bool>("cpu_enabled");
+    _computer.IsGpuEnabled = _settings.GetValue<bool>("gpu_enabled");
+    _computer.IsMemoryEnabled = _settings.GetValue<bool>("ram_enabled");
+    _computer.IsMotherboardEnabled = _settings.GetValue<bool>("motherboard_enabled");
+    _computer.IsStorageEnabled = _settings.GetValue<bool>("hdd_enabled");
+    _computer.IsNetworkEnabled = _settings.GetValue<bool>("network_enabled");
+    _computer.IsControllerEnabled = _settings.GetValue<bool>("controller_enabled");
+    _computer.IsPsuEnabled = _settings.GetValue<bool>("psu_enabled");
+    _computer.IsBatteryEnabled = _settings.GetValue<bool>("battery_enabled");
     _computer.Open();
 
     // register groups and metrics
@@ -63,7 +71,7 @@ public class LibreHardwareMonitor : IMoBroPlugin
       .SelectMany(GetSensors)
       .Select(s => new MetricValue(s.Id, now, GetMetricValue(s)));
 
-    _service?.UpdateMetricValues(values);
+    _service.UpdateMetricValues(values);
   }
 
   private IEnumerable<IMoBroItem> ParseMetricItems()
@@ -202,19 +210,6 @@ public class LibreHardwareMonitor : IMoBroPlugin
   private static string SanitizeId(string id)
   {
     return IdSanitationRegex.Replace(id, "");
-  }
-
-  private void SetComputerSettings(IMoBroSettings settings)
-  {
-    _computer.IsCpuEnabled = settings.GetValue<bool>("cpu_enabled");
-    _computer.IsGpuEnabled = settings.GetValue<bool>("gpu_enabled");
-    _computer.IsMemoryEnabled = settings.GetValue<bool>("ram_enabled");
-    _computer.IsMotherboardEnabled = settings.GetValue<bool>("motherboard_enabled");
-    _computer.IsStorageEnabled = settings.GetValue<bool>("hdd_enabled");
-    _computer.IsNetworkEnabled = settings.GetValue<bool>("network_enabled");
-    _computer.IsControllerEnabled = settings.GetValue<bool>("controller_enabled");
-    _computer.IsPsuEnabled = settings.GetValue<bool>("psu_enabled");
-    _computer.IsBatteryEnabled = settings.GetValue<bool>("battery_enabled");
   }
 
   public void Dispose()
