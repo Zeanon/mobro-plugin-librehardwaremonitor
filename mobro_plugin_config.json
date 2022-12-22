@@ -7,74 +7,74 @@
   "localization": "Resources/Localization",
   "settings": [
     {
+      "type": "checkbox",
       "name": "cpu_enabled",
       "label": "settings.cpu.title",
       "description": "settings.cpu.desc",
-      "type": "checkbox",
       "defaultValue": true,
       "required": false
     },
     {
+      "type": "checkbox",
       "name": "gpu_enabled",
       "label": "settings.gpu.title",
       "description": "settings.gpu.desc",
-      "type": "checkbox",
       "defaultValue": true,
       "required": false
     },
     {
+      "type": "checkbox",
       "name": "ram_enabled",
       "label": "settings.ram.title",
       "description": "settings.ram.desc",
-      "type": "checkbox",
       "defaultValue": true,
       "required": false
     },
     {
+      "type": "checkbox",
       "name": "motherboard_enabled",
       "label": "settings.motherboard.title",
       "description": "settings.motherboard.desc",
-      "type": "checkbox",
       "defaultValue": true,
       "required": false
     },
     {
+      "type": "checkbox",
       "name": "hdd_enabled",
       "label": "settings.drives.title",
       "description": "settings.drives.desc",
-      "type": "checkbox",
       "defaultValue": true,
       "required": false
     },
     {
+      "type": "checkbox",
       "name": "controller_enabled",
       "label": "settings.controller.title",
       "description": "settings.controller.desc",
-      "type": "checkbox",
       "defaultValue": true,
       "required": false
     },
     {
+      "type": "checkbox",
       "name": "network_enabled",
       "label": "settings.network.title",
       "description": "settings.network.desc",
-      "type": "checkbox",
       "defaultValue": true,
       "required": false
     },
     {
+      "type": "checkbox",
       "name": "psu_enabled",
       "label": "settings.psu.title",
       "description": "settings.psu.desc",
-      "type": "checkbox",
       "defaultValue": true,
       "required": false
     },
     {
+      "type": "checkbox",
       "name": "battery_enabled",
       "label": "settings.battery.title",
       "description": "settings.battery.desc",
-      "type": "checkbox",
       "defaultValue": true,
       "required": false
     }
