@@ -65,13 +65,20 @@ public class LibreHardwareMonitor : IMoBroPlugin
 
   private void Update(object? sender, ElapsedEventArgs e)
   {
-    var now = DateTime.UtcNow;
-    var values = _computer.Hardware
-      .Peek(h => h.Update())
-      .SelectMany(GetSensors)
-      .Select(s => new MetricValue(s.Id, now, GetMetricValue(s)));
+    try
+    {
+      var now = DateTime.UtcNow;
+      var values = _computer.Hardware
+        .Peek(h => h.Update())
+        .SelectMany(GetSensors)
+        .Select(s => new MetricValue(s.Id, now, GetMetricValue(s)));
 
-    _service.UpdateMetricValues(values);
+      _service.UpdateMetricValues(values);
+    }
+    catch (Exception exception)
+    {
+      _service.NotifyError(exception);
+    }
   }
 
   private IEnumerable<IMoBroItem> ParseMetricItems()
