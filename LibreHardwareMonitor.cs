@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Timers;
 using LibreHardwareMonitor.Hardware;
 using MoBro.Plugin.LibreHardwareMonitor.Extensions;
 using MoBro.Plugin.LibreHardwareMonitor.Model;
@@ -11,6 +10,7 @@ using MoBro.Plugin.SDK.Builders;
 using MoBro.Plugin.SDK.Enums;
 using MoBro.Plugin.SDK.Models;
 using MoBro.Plugin.SDK.Models.Metrics;
+using MoBro.Plugin.SDK.Services;
 
 namespace MoBro.Plugin.LibreHardwareMonitor;
 
@@ -18,24 +18,19 @@ public class LibreHardwareMonitor : IMoBroPlugin
 {
   private static readonly Regex IdSanitationRegex = new(@"[^\w\.\-]", RegexOptions.Compiled);
   private static readonly TimeSpan UpdateInterval = TimeSpan.FromMilliseconds(1000);
+  private static readonly TimeSpan InitialDelay = TimeSpan.FromSeconds(2);
 
   private readonly IMoBroSettings _settings;
   private readonly IMoBroService _service;
+  private readonly IMoBroScheduler _scheduler;
   private readonly Computer _computer;
-  private readonly Timer _timer;
 
-  public LibreHardwareMonitor(IMoBroSettings settings, IMoBroService service)
+  public LibreHardwareMonitor(IMoBroSettings settings, IMoBroService service, IMoBroScheduler scheduler)
   {
     _settings = settings;
     _service = service;
+    _scheduler = scheduler;
     _computer = new Computer();
-    _timer = new Timer
-    {
-      Interval = UpdateInterval.TotalMilliseconds,
-      AutoReset = true,
-      Enabled = false
-    };
-    _timer.Elapsed += Update;
   }
 
   public void Init()
@@ -53,32 +48,21 @@ public class LibreHardwareMonitor : IMoBroPlugin
     _computer.Open();
 
     // register groups and metrics
-    _service.RegisterItems(ParseMetricItems());
+    _service.Register(ParseMetricItems());
 
     // start polling metric values
-    _timer.Start();
+    _scheduler.Interval(Update, UpdateInterval, InitialDelay);
   }
 
-  public void Pause() => _timer.Stop();
-
-  public void Resume() => _timer.Start();
-
-  private void Update(object? sender, ElapsedEventArgs e)
+  private void Update()
   {
-    try
-    {
-      var now = DateTime.UtcNow;
-      var values = _computer.Hardware
-        .Peek(h => h.Update())
-        .SelectMany(GetSensors)
-        .Select(s => new MetricValue(s.Id, now, GetMetricValue(s)));
+    var now = DateTime.UtcNow;
+    var values = _computer.Hardware
+      .Peek(h => h.Update())
+      .SelectMany(GetSensors)
+      .Select(s => new MetricValue(s.Id, now, GetMetricValue(s)));
 
-      _service.UpdateMetricValues(values);
-    }
-    catch (Exception exception)
-    {
-      _service.NotifyError(exception);
-    }
+    _service.UpdateMetricValues(values);
   }
 
   private IEnumerable<IMoBroItem> ParseMetricItems()
