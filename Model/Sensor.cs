@@ -8,5 +8,6 @@ internal readonly record struct Sensor(
   float? Value,
   SensorType SensorType,
   HardwareType HardwareType,
-  string GroupId
+  string GroupId,
+  string GroupName
 );

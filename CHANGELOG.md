@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Updated to LibreHardwareMonitor 0.9.2
 
+### Fixed
+
+- Sensors of sub hardware were not correctly registered as metrics and groups
+
 ## 0.1.0 - 2023-01-23
 
 ### Added
