@@ -1,4 +1,6 @@
 {
+  "settings.update.desc": "Frequenz in Millisekunden in der die Sensoren ausgelesen werden um die Metriken zu aktualisieren",
+  "settings.update.title": "Updateintervall",
   "settings.controller.desc": "Ob Controller überwacht werden sollen",
   "settings.controller.title": "Controller",
   "settings.cpu.desc": "Ob der Prozessor (CPU) überwacht werden soll",

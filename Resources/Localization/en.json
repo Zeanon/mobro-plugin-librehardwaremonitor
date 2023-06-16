@@ -1,4 +1,6 @@
 {
+  "settings.update.desc": "Frequency in milliseconds to read the sensors and update the metrics",
+  "settings.update.title": "Update frequency",
   "settings.controller.desc": "Whether controllers should be monitored",
   "settings.controller.title": "Controller",
   "settings.cpu.desc": "Whether the processor (CPU) should be monitored",

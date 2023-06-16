@@ -6,8 +6,8 @@ namespace MoBro.Plugin.LibreHardwareMonitor;
 
 public class Plugin : IMoBroPlugin
 {
-  private static readonly TimeSpan UpdateInterval = TimeSpan.FromMilliseconds(1000);
   private static readonly TimeSpan InitialDelay = TimeSpan.FromSeconds(2);
+  private const int DefaultUpdateFrequencyMs = 1000;
 
   private readonly IMoBroSettings _settings;
   private readonly IMoBroService _service;
@@ -32,7 +32,8 @@ public class Plugin : IMoBroPlugin
     _service.Register(_libre.GetMetricItems());
 
     // start polling metric values
-    _scheduler.Interval(UpdateMetricValues, UpdateInterval, InitialDelay);
+    var updateFrequency = _settings.GetValue("update_frequency", DefaultUpdateFrequencyMs);
+    _scheduler.Interval(UpdateMetricValues, TimeSpan.FromMilliseconds(updateFrequency), InitialDelay);
   }
 
   private void UpdateMetricValues()
