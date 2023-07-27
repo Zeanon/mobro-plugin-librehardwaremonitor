@@ -23,7 +23,7 @@
 
     <ItemGroup>
         <PackageReference Include="LibreHardwareMonitorLib" Version="0.9.2" />
-        <PackageReference Include="MoBro.Plugin.SDK" Version="0.2.0" PrivateAssets="all" />
+        <PackageReference Include="MoBro.Plugin.SDK" Version="0.3.0" PrivateAssets="all" />
     </ItemGroup>
 
     <ItemGroup>

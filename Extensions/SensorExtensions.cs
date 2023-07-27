@@ -3,14 +3,14 @@ using LibreHardwareMonitor.Hardware;
 using MoBro.Plugin.LibreHardwareMonitor.Model;
 using MoBro.Plugin.SDK.Builders;
 using MoBro.Plugin.SDK.Enums;
-using MoBro.Plugin.SDK.Models;
+using MoBro.Plugin.SDK.Models.Categories;
 using MoBro.Plugin.SDK.Models.Metrics;
 
 namespace MoBro.Plugin.LibreHardwareMonitor.Extensions;
 
 internal static class SensorExtensions
 {
-  public static IMetric AsMetric(this Sensor sensor)
+  public static Metric AsMetric(this Sensor sensor)
   {
     return MoBroItem
       .CreateMetric()
@@ -22,7 +22,7 @@ internal static class SensorExtensions
       .Build();
   }
 
-  public static IGroup AsGroup(this Sensor sensor)
+  public static Group AsGroup(this Sensor sensor)
   {
     return MoBroItem.CreateGroup()
       .WithId(sensor.GroupId)

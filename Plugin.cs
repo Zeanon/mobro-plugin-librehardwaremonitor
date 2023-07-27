@@ -4,7 +4,7 @@ using MoBro.Plugin.SDK.Services;
 
 namespace MoBro.Plugin.LibreHardwareMonitor;
 
-public class Plugin : IMoBroPlugin
+public class Plugin : IMoBroPlugin, IDisposable
 {
   private static readonly TimeSpan InitialDelay = TimeSpan.FromSeconds(2);
   private const int DefaultUpdateFrequencyMs = 1000;
