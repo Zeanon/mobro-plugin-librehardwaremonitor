@@ -4,13 +4,13 @@
         <TargetFramework>net7.0-windows</TargetFramework>
         <RootNamespace>MoBro.Plugin.LibreHardwareMonitor</RootNamespace>
         <Authors>ModBros</Authors>
-        <Company>ModBros OG</Company>
+        <Company>ModBros KG</Company>
         <Product>MoBro</Product>
         <Description>LibreHardwareMonitor Plugin for MoBro</Description>
         <IsPackable>false</IsPackable>
         <Title>MoBro LibreHardwareMonitor Plugin</Title>
-        <Copyright>(C) ModBros OG 2023</Copyright>
-        <PackageProjectUrl>www.mod-bros.com</PackageProjectUrl>
+        <Copyright>(C) ModBros KG 2024</Copyright>
+        <PackageProjectUrl>https://mobro.app</PackageProjectUrl>
         <VersionPrefix>0.1.4</VersionPrefix>
         <Nullable>enable</Nullable>
         <OutputType>Exe</OutputType>
