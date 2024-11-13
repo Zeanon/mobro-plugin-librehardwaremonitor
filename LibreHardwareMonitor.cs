@@ -15,12 +15,7 @@ public class LibreHardwareMonitor : IDisposable
 {
   private static readonly Regex IdSanitationRegex = new(@"[^\w\.\-]", RegexOptions.Compiled);
 
-  private readonly Computer _computer;
-
-  public LibreHardwareMonitor()
-  {
-    _computer = new Computer();
-  }
+  private readonly Computer _computer = new();
 
   public void Update(IMoBroSettings settings)
   {
@@ -40,16 +35,15 @@ public class LibreHardwareMonitor : IDisposable
   public IEnumerable<IMoBroItem> GetMetricItems()
   {
     var sensors = GetSensors();
-    var metrics = sensors
-      .Select(sensor => sensor.AsMetric())
-      .Select(m => m as IMoBroItem);
+    var sensorsArray = sensors as Sensor[] ?? sensors.ToArray();
+    var metrics = sensorsArray
+      .Select(IMoBroItem (sensor) => sensor.AsMetric());
 
-    var groups = sensors
-      .Select(sensor => sensor.AsGroup())
-      .DistinctBy(g => g.Id)
-      .Select(m => m as IMoBroItem);
+    var groups = sensorsArray
+      .Select(IMoBroItem (sensor) => sensor.AsGroup())
+      .DistinctBy(g => g.Id);
 
-    return metrics.Concat(groups);
+    return groups.Concat(metrics);
   }
 
   public IEnumerable<MetricValue> GetMetricValues()
