@@ -8,6 +8,7 @@ public class Plugin : IMoBroPlugin, IDisposable
 {
   private static readonly TimeSpan InitialDelay = TimeSpan.FromSeconds(2);
   private const int DefaultUpdateFrequencyMs = 1000;
+  private const int DefaultInitDelay = 0;
 
   private readonly IMoBroSettings _settings;
   private readonly IMoBroService _service;
@@ -24,6 +25,12 @@ public class Plugin : IMoBroPlugin, IDisposable
   }
 
   public void Init()
+  {
+    var initDelay = _settings.GetValue("init_delay", DefaultInitDelay);
+    _scheduler.OneOff(InitLibre, TimeSpan.FromSeconds(initDelay));
+  }
+
+  private void InitLibre()
   {
     // update LibreHardwareMonitor according to settings
     _libre.Update(_settings);

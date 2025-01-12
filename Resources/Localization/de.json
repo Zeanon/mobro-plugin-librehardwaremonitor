@@ -18,5 +18,7 @@
   "settings.ram.desc": "Ob der Arbeitsspeicher (RAM) überwacht werden soll",
   "settings.ram.title": "Arbeitsspeicher",
   "settings.battery.desc": "Ob die Batterie überwacht werden soll",
-  "settings.battery.title": "Batterie"
+  "settings.battery.title": "Batterie",
+  "settings.delay.desc": "Optionale Verzögerung vor der Initialisierung und Abfrage der Sensoren (in Sekunden)",
+  "settings.delay.title": "Initialisierungsverzögerung"
 }

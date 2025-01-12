@@ -18,5 +18,7 @@
   "settings.ram.desc": "Whether the system memory (RAM) should be monitored",
   "settings.ram.title": "Memory",
   "settings.battery.desc": "Whether the battery should be monitored",
-  "settings.battery.title": "Battery"
+  "settings.battery.title": "Battery",
+  "settings.delay.desc": "Optional delay before initializing and querying sensors (in seconds)",
+  "settings.delay.title": "Initialization delay"
 }

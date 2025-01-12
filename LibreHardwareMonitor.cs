@@ -29,6 +29,7 @@ public class LibreHardwareMonitor : IDisposable
     _computer.IsPsuEnabled = settings.GetValue<bool>("psu_enabled");
     _computer.IsBatteryEnabled = settings.GetValue<bool>("battery_enabled");
 
+    _computer.Reset();
     _computer.Open();
   }
 

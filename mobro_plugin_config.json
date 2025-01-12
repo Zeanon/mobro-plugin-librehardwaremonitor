@@ -119,6 +119,15 @@
       "description": "settings.battery.desc",
       "defaultValue": true,
       "required": false
+    },
+    {
+      "type": "number",
+      "name": "init_delay",
+      "label": "settings.delay.title",
+      "description": "settings.delay.desc",
+      "required": false,
+      "defaultValue": 0,
+      "min": 0
     }
   ]
 }
