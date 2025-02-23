@@ -1,44 +1,48 @@
-Integrates PC hardware metrics provided
+Integrates PC hardware metrics made available
 by [LibreHardwareMonitor](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor).
 
 # Disclaimer
 
-This plugin is developed and provided by ModBros and is not affiliated with LibreHardwareMonitor.  
-It integrates and utilizes the [LibreHardwareMonitorLib](https://www.nuget.org/packages/LibreHardwareMonitorLib/)
-provided by LibreHardwareMonitor to read the PC hardware metrics.
+This plugin is created and maintained by ModBros and is not associated with LibreHardwareMonitor.  
+It leverages the [LibreHardwareMonitorLib](https://www.nuget.org/packages/LibreHardwareMonitorLib/) library, provided by
+LibreHardwareMonitor, to fetch PC hardware metrics.
+
+---
 
 # Setup
 
-No further setup required.  
-LibreHardwareMonitor is already integrated in the plugin and does not need to be installed separately.
+No additional setup required.  
+The plugin comes with LibreHardwareMonitor already integrated, so no separate installation is necessary.
+
+---
 
 # Metrics
 
-All metrics available in LibreHardwareMonitor are integrated and made available in MoBro.
-
-Includes information from devices such as:
+All metrics offered by LibreHardwareMonitor are fully integrated and accessible within MoBro.  
+This includes data from various devices such as:
 
 - Motherboards
 - Intel and AMD processors
 - NVIDIA and AMD graphics cards
-- HDD, SSD and NVMe hard drives
+- HDDs, SSDs, and NVMe drives
 - Network cards
-- ...
+- And more...
+
+---
 
 # Settings
 
-This plugin exposes the following settings:
+This plugin provides the following configurable settings:
 
-| Setting          | Default | Explanation                                                                                                                                                         |
-|------------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Update frequency | 1000 ms | The frequency (in milliseconds) at which to read and update metrics from shared memory. Lower values will update metrics more frequently but may increase CPU load. |
-| Processor        | enabled | Whether to monitor and include processor (CPU) metrics.                                                                                                             |
-| Graphics Card    | enabled | Whether to monitor and include graphics card (GPU) metrics.                                                                                                         |
-| Memory           | enabled | Whether to monitor and include memory (RAM) metrics.                                                                                                                |
-| Motherboard      | enabled | Whether to monitor and include motherboard metrics.                                                                                                                 |
-| Drives           | enabled | Whether to monitor and include drive (HDDs, SSDs,...) metrics.                                                                                                      |
-| Controller       | enabled | Whether to monitor and include controller metrics.                                                                                                                  |
-| Network          | enabled | Whether to monitor and include network (CPU) metrics.                                                                                                               |
-| Power supply     | enabled | Whether to monitor and include power supply (PSU) metrics.                                                                                                          |
-| Battery          | enabled | Whether to monitor and include battery metrics.                                                                                                                     |
-
+| Setting          | Default | Description                                                                                                                                              |
+|------------------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Update frequency | 1000 ms | The interval (in milliseconds) for reading and updating metrics from shared memory. Lower values allow more frequent updates but may increase CPU usage. |
+| Processor        | enabled | Enables monitoring and inclusion of processor (CPU) metrics.                                                                                             |
+| Graphics Card    | enabled | Enables monitoring and inclusion of graphics card (GPU) metrics.                                                                                         |
+| Memory           | enabled | Enables monitoring and inclusion of memory (RAM) metrics.                                                                                                |
+| Motherboard      | enabled | Enables monitoring and inclusion of motherboard metrics.                                                                                                 |
+| Drives           | enabled | Enables monitoring and inclusion of drive (HDDs, SSDs, etc.) metrics.                                                                                    |
+| Controller       | enabled | Enables monitoring and inclusion of controller metrics.                                                                                                  |
+| Network          | enabled | Enables monitoring and inclusion of network (NIC) metrics.                                                                                               |
+| Power supply     | enabled | Enables monitoring and inclusion of power supply (PSU) metrics.                                                                                          |
+| Battery          | enabled | Enables monitoring and inclusion of battery metrics.                                                                                                     |
