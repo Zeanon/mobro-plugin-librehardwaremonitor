@@ -20,5 +20,7 @@
   "settings.battery.desc": "Whether the battery should be monitored",
   "settings.battery.title": "Battery",
   "settings.delay.desc": "Optional delay before initializing and querying sensors (in seconds)",
-  "settings.delay.title": "Initialization delay"
+  "settings.delay.title": "Initialization delay",
+  "settings.poll_delay.desc": "Delay after initializing before polling the sensors for the first time (in seconds)",
+  "settings.poll_delay.title": "Poll delay"
 }

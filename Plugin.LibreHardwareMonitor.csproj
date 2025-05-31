@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net7.0-windows</TargetFramework>
+        <TargetFramework>net8.0-windows</TargetFramework>
         <RootNamespace>MoBro.Plugin.LibreHardwareMonitor</RootNamespace>
         <Authors>ModBros</Authors>
         <Company>ModBros KG</Company>
@@ -11,7 +11,7 @@
         <Title>MoBro LibreHardwareMonitor Plugin</Title>
         <Copyright>(C) ModBros KG 2024</Copyright>
         <PackageProjectUrl>https://mobro.app</PackageProjectUrl>
-        <VersionPrefix>0.1.4</VersionPrefix>
+        <VersionPrefix>0.1.5</VersionPrefix>
         <Nullable>enable</Nullable>
         <OutputType>Exe</OutputType>
         <EnableDynamicLoading>true</EnableDynamicLoading>
@@ -24,8 +24,8 @@
 
 
     <ItemGroup>
-        <PackageReference Include="LibreHardwareMonitorLib" Version="0.9.3" />
-        <PackageReference Include="MoBro.Plugin.SDK" Version="0.3.0" PrivateAssets="all" />
+        <PackageReference Include="LibreHardwareMonitorLib" Version="0.9.4" />
+        <PackageReference Include="MoBro.Plugin.SDK" Version="1.0.1" PrivateAssets="all" />
     </ItemGroup>
 
     <ItemGroup>

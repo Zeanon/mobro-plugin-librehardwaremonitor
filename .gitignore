@@ -1,2 +1,8 @@
 bin
 obj
+.nuget
+.vs
+Properties
+LibreHardwareMonitorPlugin.zip
+modbros_librehardwaremonitor_*.zip
+.vscode
