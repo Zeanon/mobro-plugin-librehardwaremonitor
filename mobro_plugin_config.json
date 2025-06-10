@@ -2,9 +2,18 @@
   "name": "modbros_librehardwaremonitor",
   "displayName": "Libre Hardware Monitor",
   "author": "ModBros",
-  "description": null,
+  "description": "Integrates metrics from the popular free and open source PC monitoring tool",
   "assembly": "Plugin.LibreHardwareMonitor.dll",
   "localization": "Resources/Localization",
+  "repository": "https://github.com/ModBros/mobro-plugin-librehardwaremonitor",
+  "homepage": null,
+  "tags": [
+    "libre",
+    "openhardwaremonitor",
+    "open",
+    "hardware",
+    "system"
+  ],
   "settings": [
     {
       "type": "select",

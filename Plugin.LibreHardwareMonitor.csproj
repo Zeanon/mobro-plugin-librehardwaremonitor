@@ -9,16 +9,16 @@
         <Description>LibreHardwareMonitor Plugin for MoBro</Description>
         <IsPackable>false</IsPackable>
         <Title>MoBro LibreHardwareMonitor Plugin</Title>
-        <Copyright>(C) ModBros KG 2024</Copyright>
+        <Copyright>(C) ModBros KG 2025</Copyright>
         <PackageProjectUrl>https://mobro.app</PackageProjectUrl>
-        <VersionPrefix>0.1.5</VersionPrefix>
+        <VersionPrefix>1.0.1</VersionPrefix>
         <Nullable>enable</Nullable>
         <OutputType>Exe</OutputType>
         <EnableDynamicLoading>true</EnableDynamicLoading>
         <UseAppHost>false</UseAppHost>
         <SelfContained>false</SelfContained>
         <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-        <LangVersion>11</LangVersion>
+        <LangVersion>12</LangVersion>
         <InvariantGlobalization>true</InvariantGlobalization>
     </PropertyGroup>
 
